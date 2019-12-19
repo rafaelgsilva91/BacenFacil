@@ -14,7 +14,7 @@ const AppContainer = createAppContainer(
         screen: HomeScreen,
         path: '/',
         navigationOptions: {
-            title: 'BACEN FÁCIL',
+            title: 'BC CALC',
         },
       },
       DadosBacen: {

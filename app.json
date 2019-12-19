@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Bacen Fácil",
-    "slug": "BacenFacil",
-    "description":"Aplicativo desenvolvido com a finalidade de facilitar a consulta de taxas do Bacen",
+    "name": "BC Calc",
+    "slug": "BCCalc",
+    "description":"Aplicativo desenvolvido com a finalidade de facilitar a consulta de taxas do Bacen, links úteis e cálculo auxiliar para revisionais",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
@@ -28,7 +28,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.raft.bacenfacil",
+      "package": "com.raft.bccalc",
       "versionCode": 1,
       "permissions": [        
         "CAMERA",       
