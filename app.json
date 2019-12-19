@@ -29,7 +29,7 @@
     },
     "android": {
       "package": "com.raft.bccalc",
-      "versionCode": 1,
+      "versionCode": 1.1,
       "permissions": [        
         "CAMERA",       
         "READ_CONTACTS",       
