@@ -28,7 +28,14 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.raft.bacenfacil"
+      "package": "com.raft.bacenfacil",
+      "versionCode": 0.1,
+      "permissions": [        
+        "CAMERA",       
+        "READ_CONTACTS",       
+        "READ_PHONE_STATE",
+        "RECORD_AUDIO"        
+      ]
     }
   }
 }
