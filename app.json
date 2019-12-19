@@ -2,6 +2,7 @@
   "expo": {
     "name": "Bacen Fácil",
     "slug": "BacenFacil",
+    "description":"Aplicativo desenvolvido com a finalidade de facilitar a consulta de taxas do Bacen",
     "privacy": "public",
     "sdkVersion": "36.0.0",
     "platforms": [
