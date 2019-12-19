@@ -20,7 +20,10 @@ export default class Sobre extends React.Component {
             </Text>    
             <Text style={styles.text}>
               - O aplicativo pode auxiliar em cálculos revisionais, em versões futuras será implementada uma calculadora para esse fim.
-            </Text>              
+            </Text>   
+            <Text style={styles.text}>
+              - Desenvolvido e mantido por Rafael Gouveia da Silva.
+            </Text>            
           </View>   
       </SafeAreaView>
     );
