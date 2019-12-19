@@ -29,7 +29,7 @@
     },
     "android": {
       "package": "com.raft.bacenfacil",
-      "versionCode": 0.1,
+      "versionCode": 1,
       "permissions": [        
         "CAMERA",       
         "READ_CONTACTS",       
