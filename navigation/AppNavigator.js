@@ -58,11 +58,11 @@ const AppContainer = createAppContainer(
       initialRouteName: 'HomeScreen',
       defaultNavigationOptions: {
         headerStyle: {
-          backgroundColor: '#6200ee',
+          backgroundColor: '#000080',
         },
         headerTintColor: '#FFF',
         headerTitleStyle: {
-          fontWeight: 'bold',
+          //fontWeight: 'bold',
         },
       },
     }
