@@ -41,6 +41,15 @@ export default class HomeScreen extends React.Component {
           </View>
         </TouchableHighlight>
         <TouchableHighlight style={styles.itemSelected} onPress={() => {
+          this.props.navigation.navigate('CalculadoraRevisional');
+        }}>
+          <View style={styles.item}>
+            <Text style={styles.text}>
+            Calculadora Revisional
+            </Text>                
+          </View>
+        </TouchableHighlight>
+        <TouchableHighlight style={styles.itemSelected} onPress={() => {
           this.props.navigation.navigate('LinksUteis');
         }}>
           <View style={styles.item}>
