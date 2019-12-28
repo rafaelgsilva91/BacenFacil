@@ -64,7 +64,7 @@ export default class TaxasDeJuros extends React.Component {
       <View
         style={{
           height: 0.5,
-          backgroundColor: '#333',
+          backgroundColor: '#79b6f2',
         }}
       />
     );
@@ -102,7 +102,7 @@ export default class TaxasDeJuros extends React.Component {
             }}>
               <View>   
                 <Text style={styles.textStyle}>
-                    <Ionicons name="md-arrow-dropright-circle" size={20} color="#5eba7d" /> {item.nome}
+                    <Ionicons name="md-arrow-dropright-circle" size={20} color="#79b6f2" /> {item.nome}
                 </Text>
               </View>
             </TouchableHighlight>           

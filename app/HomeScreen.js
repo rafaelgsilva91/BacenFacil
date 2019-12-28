@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   item: {
     borderRadius: 8,  
     alignItems: "center",
-    backgroundColor: "#5eba7d",
+    backgroundColor: "#3498db",
     flexGrow: 1,
     margin: 4,
     padding: 20
@@ -84,6 +84,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: "#333333"
+    color: "#FFFs"
   }
 });

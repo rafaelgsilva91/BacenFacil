@@ -49,7 +49,7 @@ export default class Dadosbacen extends React.Component {
         <View
           style={{
             height: 0.5,
-            backgroundColor: '#333',
+            backgroundColor: '#79b6f2',
           }}
         />
       );
@@ -75,7 +75,7 @@ export default class Dadosbacen extends React.Component {
               <TouchableHighlight style={styles.itemSelected} onPress={() => {alert(item.data +' - '+ item.valor+'%')}}>            
                 <View>     
                   <Text style={styles.textStyle}>
-                    <Ionicons name="md-arrow-dropright-circle" size={20} color="#5eba7d" /> {item.data} - {item.valor}%
+                    <Ionicons name="md-arrow-dropright-circle" size={20} color="#79b6f2" /> {item.data} - {item.valor}%
                   </Text>
                 </View>
               </TouchableHighlight>           
