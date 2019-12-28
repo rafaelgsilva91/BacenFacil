@@ -49,6 +49,7 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   item: {
+    borderRadius: 8,  
     alignItems: "center",
     backgroundColor: "#79b6f2",
     flexGrow: 1,

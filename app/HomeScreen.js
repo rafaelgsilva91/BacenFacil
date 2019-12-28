@@ -7,10 +7,7 @@ export default class HomeScreen extends React.Component {
   constructor(props) {
     super(props);   
     this.state = {
-      data: [
-        { id: "00", name: "Taxas Médias Mensais" },
-        { id: "01", name: "Links Úteis" },       
-      ]
+      
     };
   }
 
@@ -68,6 +65,7 @@ export default class HomeScreen extends React.Component {
 
 const styles = StyleSheet.create({
   item: {
+    borderRadius: 8,  
     alignItems: "center",
     backgroundColor: "#5eba7d",
     flexGrow: 1,

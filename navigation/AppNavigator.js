@@ -4,6 +4,7 @@ import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from '../app/HomeScreen';
 import DadosBacen from '../app/DadosBacen';
 import TaxasDeJuros from '../app/TaxasDeJuros';
+import CalculadoraRevisional from '../app/CalculadoraRevisional';
 import LinksUteis from '../app/LinksUteis';
 import Sobre from '../app/Sobre';
 
@@ -29,6 +30,13 @@ const AppContainer = createAppContainer(
         path: '/',
         navigationOptions: {
             title: 'TAXAS DE JUROS',
+        },
+      },
+      CalculadoraRevisional: {
+        screen: CalculadoraRevisional,
+        path: '/',
+        navigationOptions: {
+            title: 'CALCULADORA REVISIONAL',
         },
       },
       LinksUteis: {

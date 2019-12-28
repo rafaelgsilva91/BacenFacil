@@ -9,7 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons'
 
 export default class TaxasDeJuros extends React.Component {
 
