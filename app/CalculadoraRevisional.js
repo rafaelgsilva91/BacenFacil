@@ -4,6 +4,7 @@ import { Constants } from 'expo';
 import { Button, TextInput } from 'react-native-paper';
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import TextInputMask from 'react-native-text-input-mask';
 
 const FormCalculadora = Yup.object({
   taxaBacen: Yup.number()              
@@ -36,6 +37,12 @@ export default class CalculadoraRevisional extends Component {
                 onChangeText={handleChange('taxaBacen')}
                 onBlur={handleBlur('taxaBacen')}
                 value={values.taxaBacen}
+                render={props =>
+                    <TextInputMask
+                    {...props}
+                    mask="+[00] [000] [000] [000]"
+                    />
+                }
                 style={styles.input}
                 label="Taxa Bacen"
                 placeholder="Informe a taxa do Bacen!"
