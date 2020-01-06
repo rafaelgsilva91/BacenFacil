@@ -2,20 +2,21 @@ import React, { Component } from 'react';
 import { Alert, Keyboard, Text, View, StyleSheet } from 'react-native';
 import { Constants } from 'expo';
 import { Button, TextInput } from 'react-native-paper';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, Field } from 'formik';
 import * as Yup from 'yup';
-import TextInputMask from 'react-native-text-input-mask';
+import NumberFormat from 'react-number-format';
+import { TextInputMask } from 'react-native-masked-text';
 
 const FormCalculadora = Yup.object({
-  taxaBacen: Yup.number()              
+  taxaBacen: Yup.string()              
   .required('Preencha esse campo'),
-  taxaContrato: Yup.number()              
+  taxaContrato: Yup.string()              
   .required('Preencha esse campo'),
-  vlrContrato: Yup.number()              
+  vlrContrato: Yup.string()              
   .required('Preencha esse campo'),
   qdteParcela: Yup.number()              
   .required('Preencha esse campo'),
-  vlrParcela: Yup.number()              
+  vlrParcela: Yup.string()              
   .required('Preencha esse campo'),
 });
 
@@ -28,7 +29,7 @@ export default class CalculadoraRevisional extends Component {
             initialValues={{ taxaBacen: '', taxaContrato: '', vlrContrato: '', qdteParcela: '', vlrParcela: '' }} 
             validationSchema={FormCalculadora}
             onSubmit={values => {
-                Alert.alert(JSON.stringify(values, null, 2));
+                console.log(JSON.stringify(values, null, 2));
                 Keyboard.dismiss();
             }}>
             {({ handleChange, handleBlur, handleSubmit, touched, errors, values }) => (
@@ -37,16 +38,22 @@ export default class CalculadoraRevisional extends Component {
                 onChangeText={handleChange('taxaBacen')}
                 onBlur={handleBlur('taxaBacen')}
                 value={values.taxaBacen}
-                render={props =>
-                    <TextInputMask
-                    {...props}
-                    mask="+[00] [000] [000] [000]"
-                    />
-                }
                 style={styles.input}
-                label="Taxa Bacen"
+                label="Taxa Bacen (%)"
                 placeholder="Informe a taxa do Bacen!"
-              />
+                render={props =>
+                  <TextInputMask
+                    type={'money'}
+                    options={{
+                      unit: '',
+                      suffixUnit: ''
+                    }}
+                    style={styles.inputMask}
+                    value={values.taxaBacen}
+                    onChangeText={handleChange('taxaBacen')}
+                  />    
+                }
+              /> 
               {touched.taxaBacen && errors.taxaBacen ? (
                 <Text style={styles.error}>{errors.taxaBacen}</Text>
               ) : null}
@@ -55,8 +62,20 @@ export default class CalculadoraRevisional extends Component {
                 onBlur={handleBlur('taxaContrato')}
                 value={values.taxaContrato}
                 style={styles.input}
-                label="Taxa do Contrato"
+                label="Taxa do Contrato (%)"
                 placeholder="Informe a taxa do contrato!"
+                render={props =>
+                  <TextInputMask
+                    type={'money'}
+                    options={{
+                      unit: '',
+                      suffixUnit: ''
+                    }}
+                    style={styles.inputMask}
+                    value={values.taxaContrato}
+                    onChangeText={handleChange('taxaContrato')}
+                  />    
+                }
               />
               {touched.taxaContrato && errors.taxaContrato ? (
                 <Text style={styles.error}>{errors.taxaContrato}</Text>
@@ -66,8 +85,20 @@ export default class CalculadoraRevisional extends Component {
                 onBlur={handleBlur('vlrContrato')}
                 value={values.vlrContrato}
                 style={styles.input}
-                label="Valor do Contrato"
+                label="Valor do Contrato (R$)"
                 placeholder="Informe o valor do contrato!"
+                render={props =>
+                  <TextInputMask
+                    type={'money'}
+                    options={{
+                      unit: '',
+                      suffixUnit: ''
+                    }}
+                    style={styles.inputMask}
+                    value={values.vlrContrato}
+                    onChangeText={handleChange('vlrContrato')}
+                  />    
+                }
               />
               {touched.vlrContrato && errors.vlrContrato ? (
                 <Text style={styles.error}>{errors.vlrContrato}</Text>
@@ -79,6 +110,14 @@ export default class CalculadoraRevisional extends Component {
                 style={styles.input}
                 label="Qtde. de Parcelas"
                 placeholder="Informe a qtde. parcelas!"
+                render={props =>
+                  <TextInputMask
+                    type={'only-numbers'}
+                    style={styles.inputMask}
+                    value={values.qdteParcela}
+                    onChangeText={handleChange('qdteParcela')}
+                  />    
+                }
               />
               {touched.qdteParcela && errors.qdteParcela ? (
                 <Text style={styles.error}>{errors.qdteParcela}</Text>
@@ -88,8 +127,20 @@ export default class CalculadoraRevisional extends Component {
                 onBlur={handleBlur('vlrParcela')}
                 value={values.vlrParcela}
                 style={styles.input}
-                label="Valor da Parcela"
+                label="Valor da Parcela (R$)"
                 placeholder="Informe o valor da parcela!"
+                render={props =>
+                  <TextInputMask
+                    type={'money'}
+                    options={{
+                      unit: '',
+                      suffixUnit: ''
+                    }}
+                    style={styles.inputMask}
+                    value={values.vlrParcela}
+                    onChangeText={handleChange('vlrParcela')}
+                  />    
+                }
               />
               {touched.vlrParcela && errors.vlrParcela ? (
                 <Text style={styles.error}>{errors.vlrParcela}</Text>
@@ -123,6 +174,12 @@ const styles = StyleSheet.create({
     borderColor: '#CCC',
     borderWidth: 1,
     backgroundColor: '#fff',
+    marginTop: 5
+  },
+  inputMask: {
+    height: 50,
+    paddingHorizontal: 8,
+    paddingTop: 20
   },
   error: {
     margin: 8,
