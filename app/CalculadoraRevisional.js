@@ -25,11 +25,32 @@ export default class CalculadoraRevisional extends Component {
     super(props);   
     this.state = {
       modalVisible: false,
+      vlrParcelaReal: 0,
+      vlrCobradoMaior: 0,
     };
   }
 
   setModalVisible(visible) {
     this.setState({modalVisible: visible});
+  }
+
+  calcularValores(montante, taxa, qdteParcela, vlrParcela) {
+    let vlrParcelaReal, vlrCobradoMaior;
+    montante = montante.replace(".", "").replace(",", ".");
+    montante = parseFloat(montante);
+    vlrParcela = vlrParcela.replace(".", "").replace(",", ".");
+    vlrParcela = parseFloat(vlrParcela);
+    taxa = taxa.replace(".", "").replace(",", ".");
+    taxa = parseFloat(taxa) / 100;
+    //Vlr Parcela Real
+    vlrParcelaReal = (montante * taxa)/(1 - Math.pow(1/(1 + taxa), qdteParcela));
+		vlrParcelaReal = Math.round(vlrParcelaReal*100)/100;
+    //Vlr a maior
+    vlrCobradoMaior = (vlrParcela * qdteParcela) - (vlrParcelaReal * qdteParcela);
+    vlrCobradoMaior = Math.round(vlrCobradoMaior*100)/100;
+    
+    this.setState({vlrParcelaReal: vlrParcelaReal});
+    this.setState({vlrCobradoMaior: vlrCobradoMaior});
   }
 
   render() {
@@ -41,18 +62,34 @@ export default class CalculadoraRevisional extends Component {
           transparent={false}
           visible={this.state.modalVisible}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed.');
+            
           }}>
           <View style={{marginTop: 22}}>
             <View>
-              <Text>Hello World!</Text>
-
-              <TouchableHighlight
-                onPress={() => {
+              <Text style={styles.title}>Como deveria ser, conforme taxas do Bacen: </Text>
+              <Text style={styles.text}>Valor da parcela: </Text>
+              <NumberFormat
+                  value={this.state.vlrParcelaReal}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={'R$'}
+                  renderText={value => <Text style={styles.text}>{value}</Text>} 
+              /> 
+              <Text style={styles.text}>Valor cobrado a mais: </Text>
+              <NumberFormat
+                  value={this.state.vlrCobradoMaior}
+                  displayType={'text'}
+                  thousandSeparator={true}
+                  prefix={'R$'}
+                  renderText={value => <Text style={styles.text}>{value}</Text>} 
+              /> 
+              <Button onPress={() => {
                   this.setModalVisible(!this.state.modalVisible);
-                }}>
-                <Text>Hide Modal</Text>
-              </TouchableHighlight>
+                }} 
+                style={styles.button}
+              >
+                Voltar
+              </Button>
             </View>
           </View>
         </Modal>
@@ -63,6 +100,7 @@ export default class CalculadoraRevisional extends Component {
             onSubmit={values => {
                 console.log(JSON.stringify(values, null, 2));
                 this.setModalVisible(true);
+                this.calcularValores(values.vlrContrato, values.taxaBacen, values.qdteParcela, values.vlrParcela);
                 Keyboard.dismiss();
             }}>
             {({ handleChange, handleBlur, handleSubmit, touched, errors, values }) => (
@@ -219,5 +257,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: 'red',
     fontWeight: 'bold',
+  },
+  title: {
+    margin: 8,
+    fontSize: 16,
+    color: '#3498db',
+    fontWeight: 'bold',
+  },
+  text: {
+    margin: 8,
+    fontSize: 14,
+    color: '#333',
   },
 });
