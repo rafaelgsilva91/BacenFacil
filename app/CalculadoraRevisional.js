@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Alert, Keyboard, Text, View, StyleSheet } from 'react-native';
+import { Alert, Keyboard, Text, View, StyleSheet, TouchableHighlight, Modal} from 'react-native';
 import { Constants } from 'expo';
 import { Button, TextInput } from 'react-native-paper';
 import { Formik, ErrorMessage, Field } from 'formik';
@@ -21,15 +21,48 @@ const FormCalculadora = Yup.object({
 });
 
 export default class CalculadoraRevisional extends Component {
+  constructor(props) {
+    super(props);   
+    this.state = {
+      modalVisible: false,
+    };
+  }
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.content}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed.');
+          }}>
+          <View style={{marginTop: 22}}>
+            <View>
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight
+                onPress={() => {
+                  this.setModalVisible(!this.state.modalVisible);
+                }}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+
           <Formik    
             initialValues={{ taxaBacen: '', taxaContrato: '', vlrContrato: '', qdteParcela: '', vlrParcela: '' }} 
             validationSchema={FormCalculadora}
             onSubmit={values => {
                 console.log(JSON.stringify(values, null, 2));
+                this.setModalVisible(true);
                 Keyboard.dismiss();
             }}>
             {({ handleChange, handleBlur, handleSubmit, touched, errors, values }) => (
