@@ -28,7 +28,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.raft.bccalc",
+      "package": "com.raft.bacenfacil",
       "versionCode": 2,
       "permissions": [        
         "CAMERA",       
