@@ -9,7 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
-import { Ionicons } from '@expo/vector-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export default class TaxasDeJuros extends React.Component {
 
@@ -100,9 +100,10 @@ export default class TaxasDeJuros extends React.Component {
                 url: item.url,
               });
             }}>
-              <View>   
+              <View style={styles.item}>
+                <FontAwesomeIcon icon="caret-right" size={16} style={styles.icon}/>   
                 <Text style={styles.textStyle}>
-                    <Ionicons name="md-arrow-dropright-circle" size={20} color="#79b6f2" /> {item.nome}
+                     {item.nome}
                 </Text>
               </View>
             </TouchableHighlight>           
@@ -118,18 +119,33 @@ export default class TaxasDeJuros extends React.Component {
 
 const styles = StyleSheet.create({
   viewStyle: {
-    justifyContent: 'center',
     flex: 1,
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#fff',
     marginTop: Platform.OS == 'ios' ? 30 : 0,
   },
 
   textStyle: {
-    padding: 15,
     fontSize: 16,
+    color: "#333",
+    marginLeft:10,
   },
 
-  itemSelected: {   
-    backgroundColor: '#fafafa',   
+  itemSelected:{
+    
   },
+
+  item: {
+    borderRadius: 8,  
+    alignItems: "center",
+    backgroundColor: "#fff",
+    flexGrow: 1,
+    flexDirection: 'row',
+    margin: 3,
+    padding: 10,
+  },
+  
+  icon: {
+    color: '#333',
+  }
+
 });

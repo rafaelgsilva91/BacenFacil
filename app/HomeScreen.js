@@ -1,8 +1,9 @@
 import React from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text, View, TouchableHighlight } from "react-native";
-import { Ionicons } from '@expo/vector-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export default class HomeScreen extends React.Component {
+  
 
   constructor(props) {
     super(props);   
@@ -17,6 +18,7 @@ export default class HomeScreen extends React.Component {
 
   render() {   
     return (
+      
       <SafeAreaView>
         <TouchableHighlight style={styles.itemSelected} onPress={() => {
           this.props.navigation.navigate('TaxasDeJuros', {           
@@ -24,6 +26,7 @@ export default class HomeScreen extends React.Component {
           });
         }}>
           <View style={styles.item}>
+            <FontAwesomeIcon icon="percent" size={22} style={styles.icon}/>
             <Text style={styles.text}>
             Taxas de Juros Médias Mensais
             </Text>                
@@ -35,6 +38,7 @@ export default class HomeScreen extends React.Component {
           });
         }}>
           <View style={styles.item}>
+            <FontAwesomeIcon icon="percent" size={22} style={styles.icon}/>
             <Text style={styles.text}>
             Taxas de Juros Médias Anuais
             </Text>                
@@ -44,6 +48,7 @@ export default class HomeScreen extends React.Component {
           this.props.navigation.navigate('CalculadoraRevisional');
         }}>
           <View style={styles.item}>
+            <FontAwesomeIcon icon="calculator" size={22} style={styles.icon}/>
             <Text style={styles.text}>
             Calculadora Revisional
             </Text>                
@@ -53,6 +58,7 @@ export default class HomeScreen extends React.Component {
           this.props.navigation.navigate('LinksUteis');
         }}>
           <View style={styles.item}>
+            <FontAwesomeIcon icon="globe" size={22} style={styles.icon}/>
             <Text style={styles.text}>
             Links Úteis
             </Text>                
@@ -62,6 +68,7 @@ export default class HomeScreen extends React.Component {
           this.props.navigation.navigate('Sobre');
         }}>
           <View style={styles.item}>
+            <FontAwesomeIcon icon="info" size={22} style={styles.icon}/>
             <Text style={styles.text}>
             Sobre o APP
             </Text>                
@@ -78,12 +85,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#3498db",
     flexGrow: 1,
+    flexDirection: 'row',
     margin: 4,
-    padding: 20
+    padding: 20,
   },
   text: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: "#FFF"
-  }
-});
+    color: "#FFF",
+    marginLeft:10,
+  },
+  icon: {
+    color: '#333',
+  },
+ });

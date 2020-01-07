@@ -1,5 +1,6 @@
 import React from "react";
 import { SafeAreaView, StyleSheet, Text, View} from "react-native";
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 
 export default class Sobre extends React.Component {
 
@@ -14,15 +15,16 @@ export default class Sobre extends React.Component {
   render() {   
     return (
       <SafeAreaView>     
-          <View style={styles.item}>
+          <View style={styles.viewStyle}>
+            <FontAwesomeIcon icon="info" size={22} style={styles.icon}/>
             <Text style={styles.text}>
-              - Aplicativo desenvolvido com o objetivo e finalidade de facilitar o acesso aos webservices do BACEN, já que o acesso pelo portal é trabalhoso.
+              - Aplicativo desenvolvido com o objetivo de facilitar o acesso aos webservices do BACEN, já que o acesso pelo portal é pouco amigável.
             </Text>    
             <Text style={styles.text}>
-              - O aplicativo pode auxiliar em cálculos revisionais, em versões futuras será implementada uma calculadora para esse fim.
+              - O aplicativo pode auxiliar em cálculos revisionais, pois possui uma calculadora para esse fim.
             </Text>   
             <Text style={styles.text}>
-              - Desenvolvido e mantido por Rafael Gouveia da Silva.
+              - Desenvolvido e mantido por Rafael Gouveia da Silva (desenvolvedor.rafael@gmail.com).
             </Text>            
           </View>   
       </SafeAreaView>
@@ -31,15 +33,18 @@ export default class Sobre extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  item: {
-    alignItems: "center",
-    backgroundColor: "#fafafa",
-    flexGrow: 1,
-    margin: 4,
-    padding: 20
+  viewStyle: {
+    alignItems:"center",
+    flex: 1,
+    backgroundColor: '#fff',
+    marginTop:30
   },
   text: {
-    fontSize: 16,   
-    color: "#333333"
+    margin: 8,
+    fontSize: 16,
+    color: '#333',
+  },
+  icon: {
+    color: '#333',
   }
 });
